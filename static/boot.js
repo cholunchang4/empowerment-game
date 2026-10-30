@@ -1,0 +1,1 @@
+(function(){"use strict";try{window.FSL.start();window.FSL.rotateHint();var boot=document.getElementById("fsl-boot");if(boot)boot.parentNode.removeChild(boot)}catch(e){var app=document.getElementById("app");if(app)app.textContent="";if(window.console)console.error(e)}})();

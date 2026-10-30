@@ -1,0 +1,65 @@
+/* 登入卡（Email 登入連結）。版面和流程沿用感謝牆的登入卡，顏色換成遊戲的靛色＋象牙白＋曙光杏色（design-v5 tokens）。 */
+.hl-overlay { position: fixed; inset: 0; z-index: 100001; display: flex; align-items: flex-start; justify-content: center; padding: 24px 16px;
+  background: radial-gradient(120% 80% at 50% 0%, #2B2E66 0%, #1C1E45 60%, #14153A 100%); overflow-y: auto; }
+.hl-overlay[hidden] { display: none; }
+body.hl-open { overflow: hidden; }
+.hl-box { width: min(440px, 100%); box-sizing: border-box; margin: auto; padding: 30px 26px 22px; border-radius: 22px; background: #FBF7EF; color: #23264F;
+  text-align: center; box-shadow: 0 24px 60px rgba(0, 0, 0, .35);
+  font-family: -apple-system, "PingFang TC", "Noto Sans TC", "Noto Sans CJK TC", "Microsoft JhengHei", "Heiti TC", system-ui, sans-serif; }
+.hl-badge { display: inline-block; margin: 0 0 14px; padding: 4px 12px; border-radius: 999px; background: #EEE8F6; border: 1px solid #CFC6E4;
+  color: #3B3F7A; font-size: 13px; font-weight: 600; }
+.hl-box h1 { margin: 0 0 10px; font-size: 22px; line-height: 1.4; color: #1C1E45; }
+.hl-box h1:focus { outline: none; }
+.hl-text { margin: 0 0 18px; font-size: 15px; line-height: 1.75; color: #3D4068; word-break: break-word; }
+.hl-text b { color: #1C1E45; font-weight: 700; word-break: break-all; }
+.hl-form { display: flex; flex-direction: column; gap: 10px; text-align: left; }
+.hl-form[hidden] { display: none; }
+.hl-remember { display: flex; align-items: center; gap: 10px; min-height: 44px; font-size: 15px; color: #23264F; cursor: pointer; }
+.hl-remember[hidden] { display: none; }
+.hl-check { width: 22px; height: 22px; margin: 0; accent-color: #3B3F7A; flex: none; }
+.hl-check:focus-visible { outline: 3px solid #3B3F7A; outline-offset: 2px; }
+.hl-label { font-size: 14px; font-weight: 600; color: #23264F; }
+.hl-input { width: 100%; box-sizing: border-box; min-height: 48px; padding: 10px 14px; border: 1.5px solid #8A8DB8; border-radius: 12px;
+  font: inherit; font-size: 16px; color: #1C1E45; background: #fff; }
+.hl-input::placeholder { color: #6B6E93; }
+.hl-input:focus { outline: 3px solid rgba(244, 168, 107, .55); outline-offset: 1px; border-color: #3B3F7A; }
+.hl-btn { min-height: 48px; padding: 10px 18px; border: 0; border-radius: 999px; font: inherit; font-size: 16px; font-weight: 700; color: #1C1E45; cursor: pointer;
+  background: #F4A86B; box-shadow: 0 6px 16px rgba(244, 168, 107, .35); }
+.hl-btn:disabled { opacity: .6; cursor: default; }
+.hl-btn:focus-visible, .hl-link:focus-visible { outline: 3px solid #3B3F7A; outline-offset: 2px; }
+.hl-msg { min-height: 1.4em; margin: 12px 0 0; font-size: 14px; line-height: 1.6; color: #3D4068; }
+.hl-msg:empty { min-height: 0; margin: 0; }
+.hl-form:not([hidden]) ~ .hl-msg:empty { min-height: 1.4em; margin-top: 12px; }
+.hl-msg.err { color: #A3261B; font-weight: 600; }
+.hl-alt { display: flex; flex-direction: column; align-items: center; gap: 6px; margin-top: 8px; }
+.hl-link { min-height: 44px; padding: 6px 12px; border: 0; background: none; color: #3B3F7A; font: inherit; font-size: 15px; font-weight: 600;
+  text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.hl-link:disabled { color: #6B6E93; text-decoration: none; cursor: default; }
+.hl-trust { width: 100%; box-sizing: border-box; margin: 6px 0 0; padding: 12px 14px; border-radius: 12px; background: #F1ECE1; text-align: left;
+  font-size: 13px; line-height: 1.7; color: #3D4068; }
+.hl-trust p { margin: 0; }
+.hl-trust p + p { margin-top: 4px; }
+.hl-stats { color: #55587E; }
+.hl-addr { font-weight: 700; color: #1C1E45; overflow-wrap: anywhere; }
+/* 「信已寄出」的垃圾郵件說明：整張卡最重要的提醒 */
+.hl-note { width: 100%; box-sizing: border-box; margin: 0 0 8px; padding: 14px 16px; border-radius: 14px; text-align: left;
+  background: #FFF4E3; border: 1px solid #EBC27E; color: #4A3500; font-size: 14px; line-height: 1.65; }
+.hl-note h2 { margin: 0 0 8px; font-size: 15px; line-height: 1.45; color: #6B4A00; }
+.hl-note dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 10px; margin: 0 0 8px; }
+.hl-note dt { font-weight: 700; color: #6B4A00; white-space: nowrap; }
+.hl-note dd { margin: 0; min-width: 0; word-break: break-word; }
+.hl-note p { margin: 0; }
+.hl-note .hl-addr { color: #3A2A00; }
+.hl-tips { width: 100%; box-sizing: border-box; margin: 4px 0 2px; padding-left: 20px; text-align: left; font-size: 14px; line-height: 1.7; color: #3D4068; }
+.hl-spin { width: 28px; height: 28px; margin: 4px 0 8px; border-radius: 50%; border: 3px solid #DAD3C3; border-top-color: #3B3F7A; animation: hl-spin 1s linear infinite; }
+@keyframes hl-spin { to { transform: rotate(360deg); } }
+.hl-cloudnote { margin-top: 8px; font-weight: 600; }
+@media (max-width: 380px) {
+  .hl-overlay { padding: 16px 12px; }
+  .hl-box { padding: 24px 18px 18px; }
+  .hl-box h1 { font-size: 20px; }
+  .hl-note { padding: 12px 13px; }
+  .hl-note dl { grid-template-columns: 1fr; gap: 0; }
+  .hl-note dd + dt { margin-top: 4px; }
+}
+@media (prefers-reduced-motion: reduce) { .hl-spin { animation-duration: 3s; } .hl-btn { box-shadow: none; } }
